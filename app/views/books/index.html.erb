@@ -1,3 +1,5 @@
+ <%= render 'books/list', book: @book, user: @user %>
+ 
  <h1>Books</h1>
 
  <table>
@@ -19,17 +21,3 @@
      <% end %>
    </tbody>
  </table>
-
-<h2>New book</h2>
-
-<%= form_with model:@book, url:'/books', local:true do |f| %>
-
-  <h4>Title</h4>
-  <%= f.text_field :title %><br />
-
-  <h4>Opinion</h4>
-  <%= f.text_area :body %><br />
-
-  <%= f.submit 'Create Book' %>
-<% end %>
-<%= paginate @books %>

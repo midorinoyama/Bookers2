@@ -10,6 +10,8 @@
    </thead>
    <tbody>
       <tr>
+          <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br />
+          <%= @book.user.name %></td>
           <td><%= @book.title %></td>
           <td><%= @book.body %></td>
           <td><%= link_to "Edit", edit_book_path(@book) %></td>

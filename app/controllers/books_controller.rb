@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    @books = Book.page(params[:page])
   end
 
   def create
@@ -15,11 +15,11 @@ class BooksController < ApplicationController
     book.save
     redirect_to book_path(book.id)
   end
-  
+
   def edit
-    @book = Book.find(params[:id])  
+    @book = Book.find(params[:id])
   end
-  
+
   def update
     book = Book.find(params[:id])
     book.update(book_params)

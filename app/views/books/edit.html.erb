@@ -7,6 +7,9 @@
 
   <h4>Opinion</h4>
   <%= f.text_area :body %><br />
-  
-  <%= f.submit 'Update Book' %>
+
+  <%= f.submit 'Update Book' %><br />
+
+  <%= link_to "Show", book_path %>
+  <%= link_to "Back", books_path %>
 <% end %>

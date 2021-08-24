@@ -17,9 +17,9 @@
 
       <%= user.introduction %></h3>
 
-      <%# if @user.id == current_user.id %>
+      <% if @user.id == current_user.id %>
     <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
-   </div>   <%# end %>
+      <% end %></div>
 
 <div class="books-contauner">
  <h2>New book</h2>

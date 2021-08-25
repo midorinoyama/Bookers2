@@ -15,21 +15,18 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="/">
-            <span>Bookers</span>
-          </a>
+          <a class="navbar-brand" href="/"><span>Bookers</span></a>
           <button class="navbar-toggler" type="button" date-toggler="collaspe"
           date-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-          aria-expand="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-           </button>
+          aria-expand="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collaspe navbar-collaspe" id="navbarNavDropdown" >
-          <ul class="navbar-nav ml-auto" >
+          <div class="collaspe navbar-collaspe" id="navbarNavDropdown" >
+            <ul class="navbar-nav ml-auto" >
 
-          <% if user_signed_in? %>
+            <% if user_signed_in? %>
 
-          <li calss="nav-item">
+            <li calss="nav-item">
             <%= link_to user_path(current_user.id),  class: 'nav-link text-light' do %>
              <span class="fas fa-home"> Home </span>
             <% end %>
@@ -37,7 +34,7 @@
 
           <li calss="nav-item">
             <%= link_to users_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-users">User</span>
+            <span class="fas fa-users">Users</span>
             <% end %>
           </li>
 
@@ -99,8 +96,10 @@
     </main>
     <footer>
       <div class="container mt-5">
-        <div calss="max-auto">
-          <p>CopyRight Infratop.inc</p>
+        <div class="row">
+          <div calss="max-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
         </div>
       </div>
     </footer>

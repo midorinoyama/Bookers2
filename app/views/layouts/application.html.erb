@@ -4,12 +4,12 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <% if user_signed_in? %>
       <li>
         <%= link_to "Bookers", root_path %>
@@ -44,6 +44,14 @@
       <li>
         <%= link_to "login", new_user_session_path %>
       </li>
+    <% end %>
+
+    <%#= flash[:notice] %>
+    <%#= flash[:success] %>
+    <%#= flash[:profileup] %>
+
+    <% flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: message_type %>
     <% end %>
 
     <%= yield %>

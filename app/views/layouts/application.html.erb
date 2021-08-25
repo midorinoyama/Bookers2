@@ -5,55 +5,104 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/438fa90fd1.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Bookers", root_path %>
-      </li>
+  <body　class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>Bookers</span>
+          </a>
+          <button class="navbar-toggler" type="button" date-toggler="collaspe"
+          date-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+          aria-expand="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
 
-      <li>
-        <%= link_to "Home", user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to "User", users_path %>
-      </li>
-      <li>
-        <%= link_to "Books", books_path %>
-      </li>
-      <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Bookers", root_path %>
-      </li>
+        <div class="collaspe navbar-collaspe" id="navbarNavDropdown" >
+          <ul class="navbar-nav ml-auto" >
 
-      <li>
-        <%= link_to "Home", root_path %>
-      </li>
-      <li>
-        <%= link_to "About", home_about_path %>
-      </li>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
-    <% end %>
+          <% if user_signed_in? %>
 
-    <%#= flash[:notice] %>
-    <%#= flash[:success] %>
-    <%#= flash[:profileup] %>
+          <li calss="nav-item">
+            <%= link_to user_path(current_user.id),  class: 'nav-link text-light' do %>
+             <span class="fas fa-home"> Home </span>
+            <% end %>
+          </li>
 
+          <li calss="nav-item">
+            <%= link_to users_path, class: 'nav-link text-light' do %>
+            <span class="fas fa-users">User</span>
+            <% end %>
+          </li>
+
+          <li calss="nav-item">
+            <%= link_to books_path, class: 'nav-link text-light' do %>
+            <span class="fas fa-book-open">Books</span>
+            <% end %>
+
+          </li>
+          <li calss="nav-item">
+
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <span class="fas fa-sign-out-alt">logout</span>
+            <% end %>
+          </li>
+
+            <% else %>
+
+          <li calss="nav-item">
+
+            <%= link_to root_path, class: 'nav-link text-light' do %>
+            <span class="fas fa-home">Home</span>
+            <% end %>
+          </li>
+
+          <li calss="nav-item">
+
+            <%= link_to home_about_path, class: 'nav-link text-light' do %>
+            <span class="fas fa-link">About</span>
+            <% end %>
+          </li>
+
+          <li calss="nav-item">
+
+            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+            <span class="fas fa--user-plus">sign up</span>
+            <% end %>
+          </li>
+          <li calss="nav-item">
+
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+            <span class="fas fa-sign-in-alt">login</span>
+            <% end %>
+          </li>
+          <% end %>
+
+          </ul>
+         </div>
+       </div>
+      </nav>
+    </header>
+
+    <main class="mb-auto">
     <% flash.each do |message_type, message| %>
     <%= content_tag :div, message, class: message_type %>
     <% end %>
 
     <%= yield %>
+    </main>
+    <footer>
+      <div class="container mt-5">
+        <div calss="max-auto">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

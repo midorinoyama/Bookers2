@@ -1,5 +1,3 @@
-<h2>User info</h2>
-
 <% if @user.errors.any? %>
   <%= @user.errors.count %>errors prohibited this obj from being saved:
   <% @user.errors.full_messages.each do |message| %>
@@ -7,19 +5,26 @@
   <% end %>
 <% end %>
 
-<%= form_with model:@user, local:true do |f| %>
+<div class="container">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
 
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName" %>
-
-
-
-  <label for="inputImage">Image</label>
-  <%= f.attachment_field :profile_image %>
-
-   <label for="inputName">Introduction</label>
-  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
-
-
-  <%= f.submit "Update User" %>
-<% end %>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+        <label for="inputName">Name</label><br />
+        <%= f.text_field :name, autofocus: true, id:"inputName" %>
+      　</div>
+      　<div class="form-group">
+        <label for="inputImage">Image</label><br />
+        <%= f.attachment_field :profile_image %>
+      　</div>
+      　<div class="form-group">
+        <label for="inputName">Introduction</label><br />
+        <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
+      　</div>
+      　<div class="form-group">
+        <%= f.submit "Update User", class: "btn btn-secondary" %>
+      　</div>
+      <% end %>
+  </div>
+</div>

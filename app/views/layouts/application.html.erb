@@ -70,7 +70,7 @@
           <li calss="nav-item">
 
             <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-            <span class="fas fa--user-plus">sign up</span>
+            <span class="fas fa-user-plus">sign up</span>
             <% end %>
           </li>
           <li calss="nav-item">
@@ -83,11 +83,11 @@
 
           </ul>
          </div>
-       </div>
+
       </nav>
     </header>
 
-    <main class="mb-auto">
+    <main>
     <% flash.each do |message_type, message| %>
     <%= content_tag :div, message, class: message_type %>
     <% end %>
@@ -95,9 +95,9 @@
     <%= yield %>
     </main>
     <footer>
-      <div class="container mt-5">
+      <div class="container mt-5 ">
         <div class="row">
-          <div calss="max-auto">
+          <div class="mx-auto">
             <p>CopyRight Infratop.inc</p>
           </div>
         </div>

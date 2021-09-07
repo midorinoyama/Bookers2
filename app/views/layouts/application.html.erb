@@ -10,103 +10,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body　class="d-flex flex-column vh-100">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <a class="navbar-brand" href="/"><span>Bookers</span></a>
-          <button class="navbar-toggler" type="button" date-toggler="collaspe"
-          date-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-          aria-expand="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collaspe navbar-collaspe" id="navbarNavDropdown" >
-            <ul class="navbar-nav ml-auto" >
-
-            <% if user_signed_in? %>
-
-            <li calss="nav-item">
-            <%= link_to user_path(current_user.id),  class: 'nav-link text-light' do %>
-             <span class="fas fa-home"> Home </span>
-            <% end %>
-          </li>
-
-          <li calss="nav-item">
-            <%= link_to users_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-users">Users</span>
-            <% end %>
-          </li>
-
-          <li calss="nav-item">
-            <%= link_to books_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-book-open">Books</span>
-            <% end %>
-
-          </li>
-          <li calss="nav-item">
-
-            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
-            <span class="fas fa-sign-out-alt">logout</span>
-            <% end %>
-          </li>
-
-            <% else %>
-
-          <li calss="nav-item">
-
-            <%= link_to root_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-home">Home</span>
-            <% end %>
-          </li>
-
-          <li calss="nav-item">
-
-            <%= link_to home_about_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-link">About</span>
-            <% end %>
-          </li>
-
-          <li calss="nav-item">
-
-            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-user-plus">sign up</span>
-            <% end %>
-          </li>
-          <li calss="nav-item">
-
-            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
-            <span class="fas fa-sign-in-alt">login</span>
-            <% end %>
-          </li>
-          <% end %>
-
-          </ul>
-         </div>
-
-      </nav>
-    </header>
-
-    <main>
-    <div class="row">
-　　 <div class="mx-auto" style="margin: 25px 0 ;">
-    <% flash.each do |message_type, message| %>
-    <%= content_tag :div, message, class: message_type %>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <%= form_with url:search_path, method: :get, local: true do |f| %>
-        <%= f.text_field 'search[value]' %>
-        <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book" }) %>
-        <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }) %>
-        <%= f.submit :"検索" %>
+  <body>
+    <%= render 'layouts/header' %>
+     <main>
+      <% flash.each do |message_type, message| %>
+       <%= content_tag :div, message, class: message_type %>
       <% end %>
-    <% end %>
-     </div>
-    </div>
 
-    <%= yield %>
-    </main>
+      <% if user_signed_in? %>
+        <%= render 'layouts/search' %>
+      <% end %>
+      <%= yield %>
+     </main>
     <footer>
       <div class="container mt-5 ">
         <div class="row">

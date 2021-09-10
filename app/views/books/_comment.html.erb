@@ -1,5 +1,5 @@
 <table>
-  <% @book.book_comments.each do |book_comment| %>
+  <% book.book_comments.each do |book_comment| %>
    <tr>
       <td>
         <%= link_to user_path(book_comment.user.id) do %>
@@ -15,7 +15,3 @@
     </tr>
   <% end %>
 </table>
-<%= form_with model:[@book, @book_comment], remote: true do |f| %>
-  <%= f.text_area :comment, size:"90x5" %><br>
-  <%= f.submit "送信" %>
-<% end %>
